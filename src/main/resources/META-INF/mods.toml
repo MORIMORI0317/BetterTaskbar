@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[37,)"
+license="GNU LGPLv3"
+[[mods]]
+modId="bettertaskbar"
+version="${file.jarVersion}"
+displayName="Better Taskbar"
+logoFile="logo.png"
+authors="MORIMORI0317"
+description='''
+This mod modifies the taskbar
+The Ikisugi MOD...
+'''
