@@ -3,7 +3,7 @@ plugins {
 }
 apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/1.17.1/fabric.gradle"
 apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/publishing.gradle"
-//apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/upload.gradle"
+apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/upload.gradle"
 
 minecraft {
 	accessWidener = file("src/main/resources/bettertaskbar.accesswidener")
