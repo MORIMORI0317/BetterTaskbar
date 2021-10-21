@@ -16,7 +16,7 @@ import java.util.function.Function;
 public class BetterTaskbarAPI {
     private static final BetterTaskbarAPI INSTANCE = new BetterTaskbarAPI();
     private static final Minecraft mc = Minecraft.getInstance();
-    protected final List<Function<Screen, ProgressTotal>> progressScreens = new ArrayList<>();
+    public final List<Function<Screen, ProgressTotal>> progressScreens = new ArrayList<>();
     private boolean support;
 
     private BetterTaskbarAPI() {

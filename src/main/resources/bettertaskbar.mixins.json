@@ -4,10 +4,11 @@
   "package": "net.morimori0317.bettertaskbar.mixin",
   "compatibilityLevel": "JAVA_16",
   "client": [
+    "GameRendererMixin",
     "LoadingOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "bettertaskbar.refmap.json"
+  "refmap": "BetterTaskbar-1.17.1-Fabric-refmap.json"
 }

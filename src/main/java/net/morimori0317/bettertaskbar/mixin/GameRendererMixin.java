@@ -1,24 +1,27 @@
-package net.morimori0317.bettertaskbar;
+package net.morimori0317.bettertaskbar.mixin;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.client.renderer.GameRenderer;
+import net.morimori0317.bettertaskbar.BetterTaskbarAPI;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Function;
 
-public class ClientHandler {
+@Mixin(GameRenderer.class)
+public class GameRendererMixin {
     private static final Minecraft mc = Minecraft.getInstance();
-    private static Screen lastScreen;
+    private Screen lastScreen;
 
-    @SubscribeEvent
-    public static void onTick(TickEvent.RenderTickEvent e) {
-        if (e.phase == TickEvent.Phase.START) {
-            onScreenTick();
-            if (lastScreen != mc.screen) {
-                onScreenChange(lastScreen);
-                lastScreen = mc.screen;
-            }
+    @Inject(method = "render", at = @At("TAIL"))
+    private void render(float f, long l, boolean bl, CallbackInfo ci) {
+        onScreenTick();
+        if (lastScreen != mc.screen) {
+            onScreenChange(lastScreen);
+            lastScreen = mc.screen;
         }
     }
 
@@ -50,5 +53,4 @@ public class ClientHandler {
         }
         btm.setState(BetterTaskbarAPI.State.NO_PROGRESS);
     }
-
 }
