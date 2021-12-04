@@ -1,10 +1,22 @@
-plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
-}
-apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/1.17.1/fabric.gradle"
-apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/publishing.gradle"
+apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/1.18/forge_mixin.gradle"
 apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/upload.gradle"
+apply from: "https://raw.githubusercontent.com/TeamFelnull/GradleTemplate/main/minecraft/publishing.gradle"
+
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+        maven {
+            url "https://repo.spongepowered.org/repository/maven-public/"
+            content { includeGroup "org.spongepowered" }
+        }
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+    }
+}
 
 minecraft {
-	accessWidener = file("src/main/resources/bettertaskbar.accesswidener")
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }
