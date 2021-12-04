@@ -1,0 +1,2 @@
+accessWidener	v1	named
+accessible field net/minecraft/client/gui/screens/LevelLoadingScreen progressListener Lnet/minecraft/server/level/progress/StoringChunkProgressListener;
