@@ -7,15 +7,19 @@ import net.minecraft.client.gui.screens.ProgressScreen;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.IExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.NetworkConstants;
 
 @Mod(BetterTaskbar.MODID)
 public class BetterTaskbar {
     public static final String MODID = "bettertaskbar";
 
     public BetterTaskbar() {
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> NetworkConstants.IGNORESERVERONLY, (remote, isServer) -> true));
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             BetterTaskbarAPI btm = BetterTaskbarAPI.getInstance();
