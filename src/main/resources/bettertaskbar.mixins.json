@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.morimori0317.bettertaskbar.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "LoadingOverlayMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "bettertaskbar.refmap.json"
+}
