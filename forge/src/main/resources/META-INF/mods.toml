@@ -1,0 +1,18 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+issueTrackerURL = "https://github.com/MORIMORI0317/BetterTaskbar/issues"
+license="GNU LGPLv3"
+
+[[mods]]
+modId = "bettertaskbar"
+version = "${version}"
+displayName = "Better Taskbar"
+authors="MORIMORI0317"
+logoFile = "logo.png"
+description = '''
+This mod modifies the taskbar
+The Ikisugi MOD...
+'''
+
+[modproperties.bettertaskbar]
+catalogueImageIcon = "icon.png"

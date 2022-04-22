@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "bettertaskbar",
+  "version": "${version}",
+  "name": "Better Taskbar",
+  "description": "This mod modifies the taskbar\nThe Ikisugi MOD...",
+  "authors": [
+    "MORIMORI0317"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/better-taskbar",
+    "sources": "https://github.com/MORIMORI0317/BetterTaskbar",
+    "issues": "https://github.com/MORIMORI0317/BetterTaskbar/issues"
+  },
+  "license": "GNU LGPLv3",
+  "icon": "assets/bettertaskbar/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.morimori0317.bettertaskbar.fabric.BetterTaskbarFabric"
+    ]
+  },
+  "mixins": [
+    "bettertaskbar.mixins.json",
+    "bettertaskbar-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*"
+  }
+}
