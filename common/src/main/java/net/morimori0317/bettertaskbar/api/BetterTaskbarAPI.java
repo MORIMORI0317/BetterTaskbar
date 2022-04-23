@@ -28,8 +28,7 @@ public class BetterTaskbarAPI {
 
         if (flg) {
             var ac = BetterTaskbar.getTaskbarAccess();
-            if (ac != null)
-                ac.setProgress(comp, total);
+            ac.setProgress(comp, total);
             updated = true;
         }
     }
@@ -40,8 +39,7 @@ public class BetterTaskbarAPI {
             lastProgress = value;
 
             var ac = BetterTaskbar.getTaskbarAccess();
-            if (ac != null)
-                ac.setProgress(value);
+            ac.setProgress(value);
 
             updated = true;
         }
@@ -52,8 +50,7 @@ public class BetterTaskbarAPI {
             lastState = state;
 
             var ac = BetterTaskbar.getTaskbarAccess();
-            if (ac != null)
-                ac.setState(state);
+            ac.setState(state);
 
             updated = true;
         }

@@ -2,6 +2,7 @@
   "required": true,
   "package": "net.morimori0317.bettertaskbar.fabric.mixin",
   "compatibilityLevel": "JAVA_16",
+  "minVersion": "0.8",
   "client": [
     "GameRendererMixin"
   ],

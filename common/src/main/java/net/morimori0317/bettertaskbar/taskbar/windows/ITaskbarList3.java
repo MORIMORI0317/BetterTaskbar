@@ -5,7 +5,6 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 import net.morimori0317.bettertaskbar.api.BetterTaskbarAPI;
 
-//https://code-examples.net/ja/q/2110fd
 public interface ITaskbarList3 {
     Guid.IID IID_ITaskbarList3 = new Guid.IID("ea1afb91-9e28-4b86-90e9-9e9f8a5eefaf");
 

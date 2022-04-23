@@ -14,7 +14,6 @@ public class BetterTaskbarForge {
     public BetterTaskbarForge() {
         ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> NetworkConstants.IGNORESERVERONLY, (remote, isServer) -> true));
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        BetterTaskbar.init();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

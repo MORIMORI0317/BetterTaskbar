@@ -16,16 +16,12 @@
   "icon": "assets/bettertaskbar/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "net.morimori0317.bettertaskbar.fabric.BetterTaskbarFabric"
-    ]
   },
   "mixins": [
     "bettertaskbar.mixins.json",
     "bettertaskbar-common.mixins.json"
   ],
   "depends": {
-    "fabricloader": "*",
-    "fabric": "*"
+    "fabricloader": "*"
   }
 }

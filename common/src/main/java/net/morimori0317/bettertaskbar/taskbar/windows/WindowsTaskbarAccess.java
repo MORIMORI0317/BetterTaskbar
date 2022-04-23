@@ -10,6 +10,7 @@ import org.lwjgl.glfw.GLFWNativeWin32;
 
 import java.util.function.BiConsumer;
 
+//https://code-examples.net/ja/q/2110fd
 public class WindowsTaskbarAccess implements ITaskbarAccess {
 
     @Override
