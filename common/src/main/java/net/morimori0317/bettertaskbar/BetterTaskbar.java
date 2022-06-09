@@ -7,8 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
-
 public class BetterTaskbar {
     public static final String MODID = "bettertaskbar";
     private static final Logger LOGGER = LogManager.getLogger(BetterTaskbar.class);
@@ -31,7 +29,7 @@ public class BetterTaskbar {
         String os = System.getProperty("os.name").toLowerCase();
         String arc = System.getProperty("os.arch").toLowerCase();
 
-        if (os.contains("windows") && arc.contains("amd64"))
+        if (os.contains("windows") && arc.contains("amd64") && WindowsTaskbarAccess.check())
             return new WindowsTaskbarAccess();
 
         return new DummyTaskbarAccess();

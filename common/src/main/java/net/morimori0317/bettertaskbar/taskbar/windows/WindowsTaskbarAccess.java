@@ -55,4 +55,20 @@ public class WindowsTaskbarAccess implements ITaskbarAccess {
             throw new RuntimeException("ITaskbarList3 release failed");
     }
 
+    public static boolean check() {
+        var clsid = new Guid.CLSID("56FDF344-FD6D-11d0-958A-006097C9A090");
+        var ref = new PointerByReference();
+        var hr = Ole32.INSTANCE.CoCreateInstance(clsid, null, WTypes.CLSCTX_SERVER, TaskbarList3.IID_ITaskbarList3, ref);
+        if (W32Errors.FAILED(hr))
+            return false;
+
+        var tbl3 = new TaskbarList3(ref.getValue());
+        var hret = tbl3.HrInit();
+        if (W32Errors.FAILED(hret))
+            return false;
+
+        var rret = tbl3.Release();
+        return !W32Errors.FAILED(rret);
+    }
+
 }
