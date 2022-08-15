@@ -69,57 +69,30 @@ components.java {
     }
 }
 
-publishing {
-    publications {
-        mavenFabric(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
-            from components.java
-            pom {
-                name = 'BetterTaskbar'
-                description = 'Very Ikisugi Better Taskbar'
-                licenses {
-                    license {
-                        name = 'GNU Lesser General Public License v3.0'
-                        url = 'https://www.gnu.org/licenses/lgpl-3.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'MORIMORI0317'
-                        name = 'MORIMORI0317'
-                    }
-                }
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            url "https://maven.felnull.dev/"
-            credentials {
-                username = "felnull"
-                password = "${project.maven_put_pass}" != '' ? "${project.maven_put_pass}" : System.getenv('mavenpassword')
-            }
-        }
-    }
-}
 
 curseforge {
     if (System.getenv('curesforgeapikey') != null && "${project.curesforge_id}" != '') {
         apiKey = System.getenv('curesforgeapikey')
         project {
             id = "${rootProject.curesforge_id}"
-            changelog = ""
+
+            changelog = '';
+
             releaseType = "${rootProject.release_type}"
             addGameVersion "${rootProject.minecraft_version}"
             addGameVersion 'Java 17'
             addGameVersion "Fabric"
+            addGameVersion "Quilt"
 
-            mainArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-${rootProject.minecraft_version}-${project.mod_version}.jar")) {
+            project.support_versions.split(",").each {
+                String version -> addGameVersion version
+            }
+
+            mainArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-mc${rootProject.max_minecraft_version}-${project.mod_version}.jar")) {
                 displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
             }
 
-            addArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.mod_version}-sources.jar")) {
+            addArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-mc${rootProject.max_minecraft_version}-${project.mod_version}-sources.jar")) {
                 displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric-sources"
             }
             afterEvaluate {
@@ -139,8 +112,8 @@ if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != '') {
         versionName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
         versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-Fabric"
         versionType = "${project.release_type}"
-        uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-${rootProject.minecraft_version}-${project.mod_version}.jar")
-        gameVersions = ["1.18.2"]
-        loaders = ["fabric","quilt"]
+        uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-mc${rootProject.max_minecraft_version}-${project.mod_version}.jar")
+        gameVersions = List.of(project.support_versions.split(","))
+        loaders = ["fabric", "quilt"]
     }
 }

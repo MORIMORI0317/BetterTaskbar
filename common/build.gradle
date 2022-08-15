@@ -13,38 +13,3 @@ dependencies {
 
     modCompileOnly files("libs/better-loading-screen-1.4.0.jar");
 }
-
-publishing {
-    publications {
-        mavenCommon(MavenPublication) {
-            artifactId = rootProject.archives_base_name
-            from components.java
-            pom {
-                name = 'BetterTaskbar'
-                description = 'Very Ikisugi Better Taskbar'
-                licenses {
-                    license {
-                        name = 'GNU Lesser General Public License v3.0'
-                        url = 'https://www.gnu.org/licenses/lgpl-3.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'MORIMORI0317'
-                        name = 'MORIMORI0317'
-                    }
-                }
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            url "https://maven.felnull.dev/"
-            credentials {
-                username = "felnull"
-                password = "${project.maven_put_pass}" != '' ? "${project.maven_put_pass}" : System.getenv('mavenpassword')
-            }
-        }
-    }
-}
