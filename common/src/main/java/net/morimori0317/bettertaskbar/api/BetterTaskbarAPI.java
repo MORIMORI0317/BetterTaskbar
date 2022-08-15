@@ -2,6 +2,9 @@ package net.morimori0317.bettertaskbar.api;
 
 import net.morimori0317.bettertaskbar.BetterTaskbar;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class BetterTaskbarAPI {
     private static final BetterTaskbarAPI INSTANCE = new BetterTaskbarAPI();
     private boolean updated;
@@ -12,6 +15,10 @@ public class BetterTaskbarAPI {
 
     public static BetterTaskbarAPI getInstance() {
         return INSTANCE;
+    }
+
+    public Path getLibraryFolderPath() {
+        return Paths.get(".");
     }
 
     public void setProgress(int comp, int total) {

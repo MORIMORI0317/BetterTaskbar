@@ -49,8 +49,8 @@ remapJar {
     injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    archiveBaseName = "${rootProject.archives_base_name}-${project.name}-${rootProject.minecraft_version}"
     classifier null
+    setArchivesBaseName("${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-mc${rootProject.max_minecraft_version}")
 }
 
 jar {

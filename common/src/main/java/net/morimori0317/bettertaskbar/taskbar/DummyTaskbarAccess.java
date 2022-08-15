@@ -13,4 +13,9 @@ public class DummyTaskbarAccess implements ITaskbarAccess {
     public void setState(BetterTaskbarAPI.State state) {
 
     }
+
+    @Override
+    public String getName() {
+        return "Dummy";
+    }
 }

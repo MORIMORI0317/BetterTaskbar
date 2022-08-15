@@ -10,4 +10,8 @@ public interface ITaskbarAccess {
     void setProgress(int comp, int total);
 
     void setState(BetterTaskbarAPI.State state);
+
+    default String getName() {
+        return "";
+    }
 }

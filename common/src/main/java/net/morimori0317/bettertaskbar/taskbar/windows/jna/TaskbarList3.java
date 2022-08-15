@@ -1,4 +1,4 @@
-package net.morimori0317.bettertaskbar.taskbar.windows;
+package net.morimori0317.bettertaskbar.taskbar.windows.jna;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.COM.COMInvoker;

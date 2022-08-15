@@ -1,8 +1,10 @@
 package net.morimori0317.bettertaskbar;
 
+import net.morimori0317.bettertaskbar.api.BetterTaskbarAPI;
 import net.morimori0317.bettertaskbar.taskbar.DummyTaskbarAccess;
 import net.morimori0317.bettertaskbar.taskbar.ITaskbarAccess;
-import net.morimori0317.bettertaskbar.taskbar.windows.WindowsTaskbarAccess;
+import net.morimori0317.bettertaskbar.taskbar.windows.jna.WindowsTaskbarJNAAccess;
+import net.morimori0317.bettertaskbar.taskbar.windows.jni.WindowsTaskbarJNIAccess;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +21,7 @@ public class BetterTaskbar {
             if (taskbarAccess instanceof DummyTaskbarAccess) {
                 LOGGER.warn("Better taskbar unsupported OS or architecture");
             } else {
-                LOGGER.info("Better Taskbar is available");
+                LOGGER.info("Better Taskbar is available (" + taskbarAccess.getName() + ")");
             }
         }
         return taskbarAccess;
@@ -29,9 +31,32 @@ public class BetterTaskbar {
         String os = System.getProperty("os.name").toLowerCase();
         String arc = System.getProperty("os.arch").toLowerCase();
 
-        if (os.contains("windows") && arc.contains("amd64") && WindowsTaskbarAccess.check())
-            return new WindowsTaskbarAccess();
+        if (os.contains("windows") && arc.contains("amd64")) {
+            if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
+                return WindowsTaskbarJNAAccess.getInstance();
+
+            if (WindowsTaskbarJNIAccess.check() && processCheck(WindowsTaskbarJNIAccess.getInstance()))
+                return WindowsTaskbarJNIAccess.getInstance();
+        }
 
         return new DummyTaskbarAccess();
+    }
+
+    private static boolean processCheck(ITaskbarAccess taskbarAccess) {
+        try {
+            taskbarAccess.setState(BetterTaskbarAPI.State.WAIT);
+            taskbarAccess.setState(BetterTaskbarAPI.State.ERROR);
+            taskbarAccess.setState(BetterTaskbarAPI.State.NORMAL);
+            taskbarAccess.setState(BetterTaskbarAPI.State.PAUSE);
+            taskbarAccess.setProgress(1, 3);
+            taskbarAccess.setProgress(2, 3);
+            taskbarAccess.setProgress(0.114514f);
+
+            taskbarAccess.setProgress(0f);
+            taskbarAccess.setState(BetterTaskbarAPI.State.NO_PROGRESS);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 }
