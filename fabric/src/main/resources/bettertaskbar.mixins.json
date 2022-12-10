@@ -1,12 +1,10 @@
 {
   "required": true,
   "package": "net.morimori0317.bettertaskbar.fabric.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
     "GameRendererMixin"
-  ],
-  "mixins": [
   ],
   "injectors": {
     "defaultRequire": 1

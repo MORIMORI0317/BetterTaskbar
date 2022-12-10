@@ -22,6 +22,5 @@
     "bettertaskbar-common.mixins.json"
   ],
   "depends": {
-    "fabricloader": "*"
   }
 }
