@@ -43,7 +43,6 @@ public class WindowsTaskbarJNAAccess implements ITaskbarAccess {
 
     private void taskbarList3(BiConsumer<ITaskbarList3, WinDef.HWND> consumer) {
         var window = Minecraft.getInstance().getWindow();
-        if (window == null) return;
         long id = GLFWNativeWin32.glfwGetWin32Window(window.getWindow());
         var hwnd = new WinDef.HWND(new Pointer(id));
         var clsid = new Guid.CLSID("56FDF344-FD6D-11d0-958A-006097C9A090");

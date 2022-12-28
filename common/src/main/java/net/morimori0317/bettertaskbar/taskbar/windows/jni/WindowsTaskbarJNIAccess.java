@@ -16,7 +16,6 @@ public class WindowsTaskbarJNIAccess implements ITaskbarAccess {
     @Override
     public void setProgress(int comp, int total) {
         var window = Minecraft.getInstance().getWindow();
-        if (window == null) return;
         long id = GLFWNativeWin32.glfwGetWin32Window(window.getWindow());
         WindowsLibrary.setTaskbarProgress(id, comp, total);
     }
@@ -24,7 +23,6 @@ public class WindowsTaskbarJNIAccess implements ITaskbarAccess {
     @Override
     public void setState(BetterTaskbarAPI.State state) {
         var window = Minecraft.getInstance().getWindow();
-        if (window == null) return;
         long id = GLFWNativeWin32.glfwGetWin32Window(window.getWindow());
         WindowsLibrary.setTaskbarProgressState(id, WindowsLibrary.ProgressState.getByState(state));
     }

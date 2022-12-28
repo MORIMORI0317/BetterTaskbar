@@ -3,7 +3,6 @@ package net.morimori0317.bettertaskbar;
 import net.morimori0317.bettertaskbar.api.BetterTaskbarAPI;
 import net.morimori0317.bettertaskbar.taskbar.DummyTaskbarAccess;
 import net.morimori0317.bettertaskbar.taskbar.ITaskbarAccess;
-import net.morimori0317.bettertaskbar.taskbar.windows.jna.WindowsTaskbarJNAAccess;
 import net.morimori0317.bettertaskbar.taskbar.windows.jni.WindowsTaskbarJNIAccess;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,8 +31,10 @@ public class BetterTaskbar {
         String arc = System.getProperty("os.arch").toLowerCase();
 
         if (os.contains("windows") && arc.contains("amd64")) {
-            if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
-                return WindowsTaskbarJNAAccess.getInstance();
+
+            //Disabled as it may crash in some environments
+          /*  if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
+                return WindowsTaskbarJNAAccess.getInstance();*/
 
             if (WindowsTaskbarJNIAccess.check() && processCheck(WindowsTaskbarJNIAccess.getInstance()))
                 return WindowsTaskbarJNIAccess.getInstance();
