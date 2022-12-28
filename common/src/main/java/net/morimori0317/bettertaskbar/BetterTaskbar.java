@@ -32,8 +32,8 @@ public class BetterTaskbar {
         String arc = System.getProperty("os.arch").toLowerCase();
 
         if (os.contains("windows") && arc.contains("amd64")) {
-            if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
-                return WindowsTaskbarJNAAccess.getInstance();
+            /*if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
+                return WindowsTaskbarJNAAccess.getInstance();*/
 
             if (WindowsTaskbarJNIAccess.check() && processCheck(WindowsTaskbarJNIAccess.getInstance()))
                 return WindowsTaskbarJNIAccess.getInstance();
