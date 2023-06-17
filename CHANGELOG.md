@@ -8,7 +8,7 @@ Changelog to track updates for this mod.
 ### Added
 
 ### Changed
-- Port MC1.20
+
 ### Deprecated
 
 ### Removed
@@ -17,4 +17,10 @@ Changelog to track updates for this mod.
 
 ### Security
 
-[Unreleased]: https://github.com/MORIMORI0317/BetterTaskbar/commits
+## [1.7.0] - 2023-06-17
+
+### Changed
+- Port MC1.20
+
+[Unreleased]: https://github.com/MORIMORI0317/BetterTaskbar/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/MORIMORI0317/BetterTaskbar/commits/v1.7.0
