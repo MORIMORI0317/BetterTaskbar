@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[46,)"
 issueTrackerURL = "https://github.com/MORIMORI0317/BetterTaskbar/issues"
 license="GNU LGPLv3"
 
@@ -12,8 +12,22 @@ authors="MORIMORI0317"
 logoFile = "logo.png"
 description = '''
 This mod modifies the taskbar
-The Ikisugi MOD...
+The ikisugi taskbar mod...
 '''
 
 [modproperties.bettertaskbar]
 catalogueImageIcon = "icon.png"
+
+[[dependencies.bettertaskbar]]
+modId = "forge"
+mandatory = true
+versionRange = "[46,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.bettertaskbar]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,)"
+ordering = "NONE"
+side = "BOTH"
