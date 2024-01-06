@@ -1,6 +1,5 @@
 package net.morimori0317.bettertaskbar.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.LoadingOverlay;
 import net.minecraft.server.packs.resources.ReloadInstance;
@@ -28,11 +27,6 @@ public class LoadingOverlayMixin {
         if (reload.isDone()) {
             api.setState(BetterTaskbarAPI.State.NO_PROGRESS);
         } else {
-          /*  if (BetterLoadingScreenIntegration.isIntegration()) {
-                api.setProgress((float) BetterLoadingScreenIntegration.getLoadingProgress());
-            } else {
-                api.setProgress(currentProgress);
-            }*/
             api.setProgress(currentProgress);
         }
     }

@@ -6,9 +6,9 @@ Changelog to track updates for this mod.
 ## [Unreleased]
 
 ### Added
-
+- Support NeoForge
 ### Changed
-
+- Changed to use only JNA
 ### Deprecated
 
 ### Removed

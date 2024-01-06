@@ -4,7 +4,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.morimori0317.bettertaskbar.TaskbarHandler;
 
-public class RenderHandler {
+public class RenderHandlerForge {
     @SubscribeEvent
     public static void onTick(TickEvent.RenderTickEvent e) {
         if (e.phase == TickEvent.Phase.START)

@@ -6,7 +6,7 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    fabric()
+    neoForge()
 }
 
 loom {
@@ -18,28 +18,26 @@ configurations {
     shadowCommon
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
-
-    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
     inputs.property "version", project.version
 
-    filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
 }
 
 shadowJar {
+    exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
@@ -47,11 +45,12 @@ shadowJar {
 }
 
 remapJar {
-    injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
     archiveClassifier.set(null)
     setArchivesBaseName("${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}")
+
+    atAccessWideners.add loom.accessWidenerPath.get().asFile.name
 }
 
 sourcesJar {
@@ -66,6 +65,7 @@ components.java {
     }
 }
 
+
 curseforge {
     if (System.getenv('curesforgeapikey') != null && "${project.curesforge_id}" != '') {
         apiKey = System.getenv('curesforgeapikey')
@@ -78,23 +78,16 @@ curseforge {
             releaseType = "${rootProject.release_type}"
             addGameVersion "${rootProject.minecraft_version}"
             addGameVersion 'Java 17'
-            addGameVersion "Fabric"
-            addGameVersion "Quilt"
+            addGameVersion "NeoForge"
 
             mainArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")) {
-                displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
+                displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-NeoForge"
             }
 
             addArtifact(file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}-sources.jar")) {
-                displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric-sources"
-            }
-            afterEvaluate {
-                uploadTask.dependsOn("build")
+                displayName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-NeoForge-sources"
             }
         }
-    }
-    options {
-        forgeGradleIntegration = false
     }
 }
 
@@ -102,12 +95,12 @@ if (System.getenv('modrinthapikey') != null && "${project.modrinth_id}" != '') {
     modrinth {
         token = System.getenv('modrinthapikey')
         projectId = "${rootProject.modrinth_id}"
-        versionName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
-        versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-Fabric"
+        versionName = "${rootProject.mod_display_name}-${rootProject.minecraft_version}-${project.mod_version}-NeoForge"
+        versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-NeoForge"
         versionType = "${project.release_type}"
         uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
         gameVersions = List.of(project.support_versions.split(","))
-        loaders = ["fabric", "quilt"]
+        loaders = ["neoforge"]
         changelog = file('../LATEST_CHANGELOG.md').text
     }
 }

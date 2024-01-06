@@ -1,7 +1,7 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "8.1.1"
     id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id "com.modrinth.minotaur" version "2.8.0"
+    id "com.modrinth.minotaur" version "2.8.7"
 }
 
 architectury {
@@ -48,18 +48,14 @@ shadowJar {
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier.set("dev-shadow")
-    setArchivesBaseName("${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}")
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
     archiveClassifier.set(null)
-}
-
-jar {
-    archiveClassifier.set("dev")
+    setArchivesBaseName("${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}")
 }
 
 sourcesJar {
@@ -80,7 +76,8 @@ curseforge {
         project {
             id = "${rootProject.curesforge_id}"
 
-            changelog = '';
+            changelogType = 'markdown'
+            changelog = file('../LATEST_CHANGELOG.md')
 
             releaseType = "${rootProject.release_type}"
             addGameVersion "${rootProject.minecraft_version}"
@@ -108,5 +105,6 @@ if (System.getenv('modrinthapikey') != null && "${project.modrinth_id}" != '') {
         uploadFile = file("${project.buildDir}/libs/${rootProject.archives_base_name}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
         gameVersions = List.of(project.support_versions.split(","))
         loaders = ["forge"]
+        changelog = file('../LATEST_CHANGELOG.md').text
     }
 }

@@ -1,4 +1,4 @@
-package net.morimori0317.bettertaskbar.taskbar.windows.jna;
+package net.morimori0317.bettertaskbar.taskbar.windows;
 
 import com.sun.jna.platform.win32.Guid;
 import com.sun.jna.platform.win32.WinDef;

@@ -18,6 +18,7 @@ public class TaskbarHandler {
 
     private static void screenTick() {
         var api = BetterTaskbarAPI.getInstance();
+       
         if (mc.screen instanceof LevelLoadingScreen loadingScreen) {
             api.setProgress(Math.max(loadingScreen.progressListener.getProgress(), 1), 100);
         } else if (mc.screen instanceof ProgressScreen || mc.screen instanceof ConnectScreen || mc.screen instanceof ReceivingLevelScreen) {

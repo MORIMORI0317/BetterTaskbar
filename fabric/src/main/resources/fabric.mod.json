@@ -8,7 +8,7 @@
     "MORIMORI0317"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/better-taskbar",
+    "homepage": "https://modrinth.com/mod/better-taskbar",
     "sources": "https://github.com/MORIMORI0317/BetterTaskbar",
     "issues": "https://github.com/MORIMORI0317/BetterTaskbar/issues"
   },
@@ -22,5 +22,6 @@
     "bettertaskbar-common.mixins.json"
   ],
   "depends": {
+    "minecraft": ">=1.20.2"
   }
 }

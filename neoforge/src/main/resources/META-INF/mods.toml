@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[48,)"
+loaderVersion = "[1,)"
 issueTrackerURL = "https://github.com/MORIMORI0317/BetterTaskbar/issues"
 license="GNU LGPLv3"
 
@@ -8,7 +8,7 @@ modId = "bettertaskbar"
 version = "${version}"
 displayName = "Better Taskbar"
 displayURL = "https://modrinth.com/mod/better-taskbar"
-updateJSONURL = "https://raw.githubusercontent.com/MORIMORI0317/BetterTaskbar/main/version_check.json"
+updateJSONURL = "https://raw.githubusercontent.com/MORIMORI0317/BetterTaskbar/main/neoforge_version_check.json"
 authors="MORIMORI0317"
 logoFile = "logo.png"
 description = '''
@@ -17,13 +17,10 @@ The ikisugi taskbar mod...
 '''
 clientSideOnly=true
 
-[modproperties.bettertaskbar]
-catalogueImageIcon = "icon.png"
-
 [[dependencies.bettertaskbar]]
-modId = "forge"
+modId = "neoforge"
 mandatory = true
-versionRange = "[48,)"
+versionRange = "[20.2,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -33,3 +30,6 @@ mandatory = true
 versionRange = "[1.20.2,)"
 ordering = "NONE"
 side = "BOTH"
+
+[[mixins]]
+config = "bettertaskbar-common.mixins.json"

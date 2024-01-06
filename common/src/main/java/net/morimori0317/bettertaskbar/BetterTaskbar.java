@@ -3,7 +3,7 @@ package net.morimori0317.bettertaskbar;
 import net.morimori0317.bettertaskbar.api.BetterTaskbarAPI;
 import net.morimori0317.bettertaskbar.taskbar.DummyTaskbarAccess;
 import net.morimori0317.bettertaskbar.taskbar.ITaskbarAccess;
-import net.morimori0317.bettertaskbar.taskbar.windows.jni.WindowsTaskbarJNIAccess;
+import net.morimori0317.bettertaskbar.taskbar.windows.WindowsTaskbarJNAAccess;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +18,7 @@ public class BetterTaskbar {
         if (taskbarAccess == null) {
             taskbarAccess = createTaskbarAccess();
             if (taskbarAccess instanceof DummyTaskbarAccess) {
-                LOGGER.warn("Better taskbar unsupported OS or architecture");
+                LOGGER.warn("Better Taskbar unsupported OS or architecture");
             } else {
                 LOGGER.info("Better Taskbar is available (" + taskbarAccess.getName() + ")");
             }
@@ -32,12 +32,9 @@ public class BetterTaskbar {
 
         if (os.contains("windows") && arc.contains("amd64")) {
 
-            //Disabled as it may crash in some environments
-          /*  if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance()))
-                return WindowsTaskbarJNAAccess.getInstance();*/
-
-            if (WindowsTaskbarJNIAccess.check() && processCheck(WindowsTaskbarJNIAccess.getInstance()))
-                return WindowsTaskbarJNIAccess.getInstance();
+            if (WindowsTaskbarJNAAccess.check() && processCheck(WindowsTaskbarJNAAccess.getInstance())) {
+                return WindowsTaskbarJNAAccess.getInstance();
+            }
         }
 
         return new DummyTaskbarAccess();

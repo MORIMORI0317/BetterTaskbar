@@ -1,6 +1,7 @@
-package net.morimori0317.bettertaskbar.platform.forge;
+package net.morimori0317.bettertaskbar.platform.neoforge;
 
-import net.minecraftforge.fml.ModList;
+
+import net.neoforged.fml.ModList;
 
 public class BTExpectPlatformImpl {
 
