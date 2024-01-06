@@ -1,0 +1,15 @@
+{
+  "homepage": "https://github.com/MORIMORI0317/BetterTaskbar/releases",
+  "1.20.2": {
+    "1.8.0": "Added\n- Support NeoForge\nChanged\n- Changed to use only JNA\n"
+  },
+  "1.20.4": {
+    "1.8.0": "Added\n- Support NeoForge\nChanged\n- Changed to use only JNA\n"
+  },
+  "promos": {
+    "1.20.2-latest": "1.8.0",
+    "1.20.2-recommended": "1.8.0",
+    "1.20.4-latest": "1.8.0",
+    "1.20.4-recommended": "1.8.0"
+  }
+}
