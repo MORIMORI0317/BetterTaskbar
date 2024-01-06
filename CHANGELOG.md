@@ -6,9 +6,9 @@ Changelog to track updates for this mod.
 ## [Unreleased]
 
 ### Added
-- Support NeoForge
+
 ### Changed
-- Changed to use only JNA
+
 ### Deprecated
 
 ### Removed
@@ -17,10 +17,19 @@ Changelog to track updates for this mod.
 
 ### Security
 
+## [1.8.0] - 2024-01-06
+
+### Added
+- Support NeoForge
+
+### Changed
+- Changed to use only JNA
+
 ## [1.7.0] - 2023-06-17
 
 ### Changed
 - Port MC1.20
 
-[Unreleased]: https://github.com/MORIMORI0317/BetterTaskbar/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/MORIMORI0317/BetterTaskbar/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/MORIMORI0317/BetterTaskbar/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/MORIMORI0317/BetterTaskbar/commits/v1.7.0
